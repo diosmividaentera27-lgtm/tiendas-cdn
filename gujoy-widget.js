@@ -303,10 +303,10 @@ canvas.addEventListener('touchstart',down,{passive:true});canvas.addEventListene
 }
 document.addEventListener('DOMContentLoaded',()=>{
 renderPacks(); renderFAQ(); renderMarquee();
-initBA(); initReveal(); initMenu(); initHero(); initExpertVideo(); initWA(); initPixel(); initGate(); initStickyAtc(); initScrolly(); initModals();
+initBA(); initReveal(); initMenu(); initHero(); initExpertVideo(); initWA(); initPixel(); initStickyAtc(); initScrolly(); initModals();
 });
   window.goBuy=goBuy;
-  renderPacks();renderFAQ();renderMarquee();initBA();initReveal();initMenu();initHero();initExpertVideo();initWA();initPixel();initGate();initStickyAtc();initScrolly();initModals();
+  renderPacks();renderFAQ();renderMarquee();initBA();initReveal();initMenu();initHero();initExpertVideo();initWA();initPixel();initStickyAtc();initScrolly();initModals();
   }catch(e){console.error('GUJOY widget error:',e);}
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();
