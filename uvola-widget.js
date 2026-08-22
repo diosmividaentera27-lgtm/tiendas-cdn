@@ -37,7 +37,11 @@ var CONFIG = {
     "ing-clavo": "https://cdn.jsdelivr.net/gh/diosmividaentera27-lgtm/tiendas-cdn@main/ing-clavo.webp",
     "pay-mp": "https://cdn.jsdelivr.net/gh/diosmividaentera27-lgtm/tiendas-cdn@main/pay-mercadopago.webp",
     "pay-cards": "https://cdn.jsdelivr.net/gh/diosmividaentera27-lgtm/tiendas-cdn@main/pay-visa-mastercard.jpg",
-    "ship-correo": "https://cdn.jsdelivr.net/gh/diosmividaentera27-lgtm/tiendas-cdn@main/ship-correo.png"
+    "ship-correo": "https://cdn.jsdelivr.net/gh/diosmividaentera27-lgtm/tiendas-cdn@main/ship-correo.png",
+    "pain-fatiga": "https://cdn.jsdelivr.net/gh/diosmividaentera27-lgtm/tiendas-cdn@main/pain-fatiga.webp",
+    "pain-niebla": "https://cdn.jsdelivr.net/gh/diosmividaentera27-lgtm/tiendas-cdn@main/pain-niebla.webp",
+    "pain-hinchazon": "https://cdn.jsdelivr.net/gh/diosmividaentera27-lgtm/tiendas-cdn@main/pain-hinchazon.webp",
+    "pain-piel": "https://cdn.jsdelivr.net/gh/diosmividaentera27-lgtm/tiendas-cdn@main/pain-piel.webp"
   }
 };
 
