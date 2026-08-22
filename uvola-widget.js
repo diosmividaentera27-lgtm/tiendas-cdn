@@ -75,7 +75,9 @@ function doAddCart(){
 (function(){
   document.querySelectorAll("[data-img]").forEach(function(slot){
     var url = CONFIG.IMAGES[slot.getAttribute("data-img")];
-    if(url){ var img=document.createElement("img"); img.src=url; img.alt=""; img.loading="lazy"; slot.innerHTML=""; slot.appendChild(img); }
+    if(!url) return;
+    if(slot.tagName === "IMG"){ slot.src = url; }
+    else { var img=document.createElement("img"); img.src=url; img.alt=""; img.loading="lazy"; slot.innerHTML=""; slot.appendChild(img); }
   });
 })();
 
