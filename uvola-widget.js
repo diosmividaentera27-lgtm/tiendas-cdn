@@ -42,7 +42,8 @@ var CONFIG = {
     "pain-niebla": "https://cdn.jsdelivr.net/gh/diosmividaentera27-lgtm/tiendas-cdn@main/pain-niebla.webp",
     "pain-hinchazon": "https://cdn.jsdelivr.net/gh/diosmividaentera27-lgtm/tiendas-cdn@main/pain-hinchazon.webp",
     "pain-piel": "https://cdn.jsdelivr.net/gh/diosmividaentera27-lgtm/tiendas-cdn@main/pain-piel.webp",
-    "car-contiene": "https://cdn.jsdelivr.net/gh/diosmividaentera27-lgtm/tiendas-cdn@main/car-contiene.webp"
+    "car-contiene": "https://cdn.jsdelivr.net/gh/diosmividaentera27-lgtm/tiendas-cdn@main/car-contiene.webp",
+    "about": "https://cdn.jsdelivr.net/gh/diosmividaentera27-lgtm/tiendas-cdn@main/about.webp"
   }
 };
 
