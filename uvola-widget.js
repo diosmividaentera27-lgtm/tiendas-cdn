@@ -67,17 +67,27 @@ function goBuy(units){
   }
   if(goBuy._busy) return; goBuy._busy = true;
   var store = CONFIG.STORE;
-  function toCheckout(){
+  // Va al checkout FIJANDO la cantidad exacta (id = línea real del carrito) para que NO se acumule
+  function toCheckout(lineId){
     var f = document.createElement("form");
     f.method = "POST"; f.action = store + "/comprar/"; f.style.display = "none";
-    var i = document.createElement("input"); i.type="hidden"; i.name="go_to_checkout"; i.value="1"; f.appendChild(i);
+    function add(n,v){ var i=document.createElement("input"); i.type="hidden"; i.name=n; i.value=v; f.appendChild(i); }
+    if(lineId){ add("quantity[" + lineId + "]", units); }
+    add("go_to_checkout", "1");
     document.body.appendChild(f); f.submit();
   }
+  // 1) asegurar el producto en el carrito
   fetch(store + "/comprar/", {
     method: "POST", credentials: "include",
     headers: {"Content-Type": "application/x-www-form-urlencoded"},
     body: "add_to_cart=" + encodeURIComponent(CONFIG.PRODUCT_ID) + "&quantity=" + encodeURIComponent(units)
-  }).then(toCheckout, toCheckout);
+  }).then(function(){
+    // 2) leer el id real de la línea del carrito (cambia por sesión)
+    return fetch(store + "/comprar/", {credentials: "include"}).then(function(r){ return r.text(); });
+  }).then(function(html){
+    var m = html && html.match(/quantity\[(\d+)\]/);
+    toCheckout(m ? m[1] : null); // 3) FIJA la cantidad exacta y salta al checkout
+  }).catch(function(){ toCheckout(null); });
 }
 
 /* Selector de packs → abre el carrito drawer (2 clics: agregar → pagar) */
