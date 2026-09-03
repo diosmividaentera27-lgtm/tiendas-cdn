@@ -57,19 +57,27 @@ var CONFIG = {
   }
 };
 
-/* Carrito Tienda Nube — POST nativo a /comprar/ con add_to_cart=PRODUCT_ID (regla del playbook) */
+/* Carrito Tienda Nube — checkout DIRECTO sin pasar por /comprar/:
+   1) agrega al carrito por AJAX (misma sesión)  2) POST go_to_checkout → salta a "Datos personales" */
 function goBuy(units){
   units = units || 1;
   if(!CONFIG.STORE || !CONFIG.PRODUCT_ID){
     alert("Falta conectar la tienda: cargá STORE y PRODUCT_ID en el CONFIG.");
     return;
   }
-  var f = document.createElement("form");
-  f.method = "POST"; f.action = CONFIG.STORE + "/comprar/"; f.style.display = "none";
-  function add(n,v){ var i=document.createElement("input"); i.type="hidden"; i.name=n; i.value=v; f.appendChild(i); }
-  add("add_to_cart", CONFIG.PRODUCT_ID);
-  add("quantity", units);
-  document.body.appendChild(f); f.submit();
+  if(goBuy._busy) return; goBuy._busy = true;
+  var store = CONFIG.STORE;
+  function toCheckout(){
+    var f = document.createElement("form");
+    f.method = "POST"; f.action = store + "/comprar/"; f.style.display = "none";
+    var i = document.createElement("input"); i.type="hidden"; i.name="go_to_checkout"; i.value="1"; f.appendChild(i);
+    document.body.appendChild(f); f.submit();
+  }
+  fetch(store + "/comprar/", {
+    method: "POST", credentials: "include",
+    headers: {"Content-Type": "application/x-www-form-urlencoded"},
+    body: "add_to_cart=" + encodeURIComponent(CONFIG.PRODUCT_ID) + "&quantity=" + encodeURIComponent(units)
+  }).then(toCheckout, toCheckout);
 }
 
 /* Selector de packs → abre el carrito drawer (2 clics: agregar → pagar) */
